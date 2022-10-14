@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.WorkMapper">
+    <select id="queryAllWork" resultType="Work">
+        select wid,wname,wsalary from work;
+    </select>
+
+    <insert id="addWork" parameterType="Work">
+        insert into work(wid,wname,wsalary) values(#{wid},#{wname},#{wsalary});
+    </insert>
+
+    <delete id="deleteWorkByWid" parameterType="String">
+        delete from work where wid=#{wid};
+    </delete>
+
+    <update id="updateWork" parameterType="Work">
+        update work set wname=#{wname},wsalary=#{wsalary} where wid=#{wid};
+    </update>
+
+    <select id="queryWorkByWid" parameterType="String" resultType="Work">
+        select wid,wname,wsalary from work where wid=#{value};
+    </select>
+</mapper>
